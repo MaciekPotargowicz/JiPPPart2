@@ -1,3 +1,7 @@
+import java.util.Arrays;
+import java.util.NoSuchElementException;
+import java.util.stream.Stream;
+
 public enum Flavour {
 
     WELL_DONE("bardzo dobrze wysmażony",150), MEDIUM_WELL("dobrze wysmażony",150), MEDIUM("średnio wysamożony",150)
@@ -17,5 +21,10 @@ public enum Flavour {
 
     public int getPrice() {
         return price;
+    }
+
+    public static Flavour getFlavour(String name){
+       return Arrays.stream(Flavour.values()).filter(flavour ->flavour.name.equals(name)).findFirst().orElseThrow(() -> new NoSuchElementException("asd"));
+        //return Stream.of(Flavour.values()).filter(flavour ->flavour.name.equals(name)).findFirst().orElseThrow(() -> new NoSuchElementException("asd"));
     }
 }

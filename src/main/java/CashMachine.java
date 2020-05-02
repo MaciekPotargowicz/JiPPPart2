@@ -6,9 +6,12 @@ public class CashMachine implements Processor {
     }
 
     @Override
-    public int calculate(int x, Flavour flavour) {
+    public void calculate(int x, Flavour flavour) {
 
-
-        return 0;
+        if (x>=flavour.getPrice()){
+            System.out.println("Reszta wynosi: " + (x - flavour.getPrice()) );
+        }else {
+            System.out.println("Zabrakło: " + (x - flavour.getPrice()) );
+        }
     }
 }
